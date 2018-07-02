@@ -23,7 +23,7 @@ class Fifa::Scraper
       player_hash[:age] = player.css(".fi-p__info--ageNum").text
       player_hash[:jersey_number] = player.css(".fi-p__num").text
       player_hash[:position] = player.css(".fi-p__info--role").text.gsub(/\s+/, "")
-      puts "#{player_hash}"
+      
       array_of_player_hashes << player_hash
     end
     array_of_player_hashes

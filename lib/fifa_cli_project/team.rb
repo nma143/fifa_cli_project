@@ -46,7 +46,10 @@ class Fifa::Team
   end
 
   def print_players
-    Fifa::Scraper.new.get_players_info(self.url)
+
+    if @players.length == 0 #only need to scrape for the players if I haven't already
+      create_roster_from_scraper
+    end
 
     if @players.length == 0
       puts "There are no players on this team"
@@ -59,6 +62,15 @@ class Fifa::Team
       end
     end
 
+  end
+
+  def create_roster_from_scraper
+    puts "I'm scraping all the player profiles from team #{@name}"
+    array_of_player_hashes = Fifa::Scraper.new.get_players_info(@url)
+    array_of_player_hashes.each do |player|
+      @players << Fifa::Player.new(player[:name], player[:age], player[:jersey_number], player[:position], self)
+    end
+    self
   end
 
 end
