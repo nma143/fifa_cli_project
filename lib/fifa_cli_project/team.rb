@@ -14,5 +14,20 @@ class Fifa::Team
     @@all
   end
 
+  def self.list_teams
+    if self.all.length == 0
+      puts "There are no teams"
+      return 0
+    else
+      puts "Here are the teams in the 2018 tournament:"
+
+      self.all.each.with_index(1) do |team, index|
+        puts "#{index}. #{team.name}"
+      end
+      return 1
+    end
+  end
+
+
 
 end
