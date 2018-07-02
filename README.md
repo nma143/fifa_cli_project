@@ -1,8 +1,7 @@
 # FifaCliProject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/fifa_cli_project`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is a cli app that lists the teams in the Fifa 2018 tournament (scraped from https://www.fifa.com/worldcup/). If the user selects a team in the list, information on each of the team's
+players will be displayed.  
 
 ## Installation
 
@@ -22,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To run this gem run `./fifa`
 
 ## Development
 
