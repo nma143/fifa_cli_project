@@ -18,13 +18,26 @@ class Fifa::Team
     self.all.find{|team| team.name==name}
   end
 
+  def self.create_from_scraper
+    puts "I'm scraping the list of teams"
+    array_of_team_hashes = Fifa::Scraper.new.get_teams_info
+    array_of_team_hashes.each do |team|
+      @@all << Fifa::Team.new(team[:name], team[:url])
+    end
+    self
+  end
+
   def self.list_teams
+    if self.all.length == 0 #only need to scrape for teams if I haven't already
+      self.create_from_scraper
+    end
+
     if self.all.length == 0
       puts "There are no teams"
       return 0
     else
       puts "Here are the teams in the 2018 tournament:"
-      Fifa::Scraper.new.get_teams_info
+
       self.all.each.with_index(1) do |team, index|
         puts "#{index}. #{team.name}"
       end
