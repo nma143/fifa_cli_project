@@ -6,8 +6,8 @@ class Fifa::CLI
       greece = Fifa::Team.new("Greece", "www.greece.com")
       canada = Fifa::Team.new("Canada", "www.canada.com")
 
-      Fifa::Team.all << greece
-      Fifa::Team.all << canada
+      #Fifa::Team.all << greece
+      #Fifa::Team.all << canada
       #(name, age, jersey_number, position, team)
       nikki = Fifa::Player.new("Nikki", "30", "12", "Mid", greece)
       jon = Fifa::Player.new("Jon", "29", "8", "Forward", canada)

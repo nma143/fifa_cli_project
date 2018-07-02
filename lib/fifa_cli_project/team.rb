@@ -24,7 +24,7 @@ class Fifa::Team
       return 0
     else
       puts "Here are the teams in the 2018 tournament:"
-
+      Fifa::Scraper.new.get_teams_info
       self.all.each.with_index(1) do |team, index|
         puts "#{index}. #{team.name}"
       end
