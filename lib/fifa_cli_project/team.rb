@@ -10,4 +10,9 @@ class Fifa::Team
     @players = []
   end
 
+  def self.all
+    @@all
+  end
+
+
 end
