@@ -46,11 +46,14 @@ class Fifa::Team
   end
 
   def print_players
+    Fifa::Scraper.new.get_players_info(self.url)
+
     if @players.length == 0
       puts "There are no players on this team"
       return 0
     else
       puts "Here are the players on team #{@name}:"
+
       @players.each.with_index(1) do |player, index|
         puts "#{index}. Name: #{player.name}, Age: #{player.age}, Jersey: #{player.jersey_number}, Position: #{player.position}"
       end
