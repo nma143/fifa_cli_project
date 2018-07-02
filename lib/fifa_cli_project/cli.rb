@@ -38,18 +38,20 @@ class Fifa::CLI
       #this means user input of e.g Greece and greece are both ok
       team_input.downcase!
       team_input.capitalize!
+
       team = nil
       if team_input == "Exit"
         puts "Bye for now"
         return team
-      elsif team_input == "Greece"
-        puts "#{team_input} selected"
-        team = team_input
-        return team
       else
-        puts "#{team_input} not found"
+        team = Fifa::Team.find_by_name(team_input)
+        if team == nil #didn't find a match, tell user and ask again for country
+          puts "#{team_input} not found"
+        else #found a match to user's input country
+          return team
+        end
       end
-    end
+    end #do loop
   end #ask_team
 
 end

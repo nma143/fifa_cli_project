@@ -14,6 +14,10 @@ class Fifa::Team
     @@all
   end
 
+  def self.find_by_name(name)
+    self.all.find{|team| team.name==name}
+  end
+
   def self.list_teams
     if self.all.length == 0
       puts "There are no teams"
@@ -27,7 +31,5 @@ class Fifa::Team
       return 1
     end
   end
-
-
 
 end
