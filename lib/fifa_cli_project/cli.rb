@@ -3,15 +3,24 @@ class Fifa::CLI
   def call
       puts "Welcome to the Fifa 2018 CLI app!"
 
-      Fifa::Team.all << Fifa::Team.new("Greece", "www.greece.com")
-      Fifa::Team.all << Fifa::Team.new("Canada", "www.canada.com")
+      greece = Fifa::Team.new("Greece", "www.greece.com")
+      canada = Fifa::Team.new("Canada", "www.canada.com")
+
+      Fifa::Team.all << greece
+      Fifa::Team.all << canada
+      #(name, age, jersey_number, position, team)
+      nikki = Fifa::Player.new("Nikki", "30", "12", "Mid", greece)
+      jon = Fifa::Player.new("Jon", "29", "8", "Forward", canada)
+
+      greece.players << nikki
+      canada.players << jon
 
       loop do
         teams_exist = Fifa::Team.list_teams #list the teams, return 1 if there is at least 1 team
         if teams_exist > 0 #if there are teams to list, ask which one to look up
           team = ask_team
           if team #if a team was selected, show its players
-            puts "Ok, here are the players..."
+            team.print_players
             puts "Type 'y' to see the list of teams. Any other entry will quit"
             list_again_input = gets.strip
             if list_again_input != "y"
