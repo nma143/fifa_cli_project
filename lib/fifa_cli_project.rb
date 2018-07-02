@@ -1,5 +1,6 @@
-require "fifa_cli_project/version"
+#require "fifa_cli_project/version"
 
-module FifaCliProject
-  # Your code goes here...
+module Fifa
 end
+
+require_relative '../config/environment'

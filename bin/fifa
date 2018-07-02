@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-puts "Hello world"
+require_relative "../lib/fifa_cli_project"
+
+Fifa::CLI.new.call
