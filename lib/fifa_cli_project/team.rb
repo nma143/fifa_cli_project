@@ -8,6 +8,7 @@ class Fifa::Team
     @name = name
     @url = url
     @players = []
+    @@all << self
   end
 
   def self.all
@@ -22,9 +23,8 @@ class Fifa::Team
     puts "I'm scraping the list of teams"
     array_of_team_hashes = Fifa::Scraper.new.get_teams_info
     array_of_team_hashes.each do |team|
-      @@all << Fifa::Team.new(team[:name], team[:url])
+      Fifa::Team.new(team[:name], team[:url])
     end
-    self
   end
 
   def self.list_teams
@@ -70,7 +70,6 @@ class Fifa::Team
     array_of_player_hashes.each do |player|
       @players << Fifa::Player.new(player[:name], player[:age], player[:jersey_number], player[:position], self)
     end
-    self
   end
 
 end
