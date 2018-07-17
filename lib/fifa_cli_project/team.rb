@@ -19,6 +19,10 @@ class Fifa::Team
     self.all.find{|team| team.name==name}
   end
 
+  def self.find_by_index(index)
+    self.all[index]
+  end
+
   def self.create_from_scraper
     puts "I'm scraping the list of teams"
     array_of_team_hashes = Fifa::Scraper.new.get_teams_info
